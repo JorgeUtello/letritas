@@ -1,0 +1,53 @@
+<div class="letritas-container">
+	<h2>¡Adivina la palabra!</h2>
+	<div class="inputs">
+		<ng-container *ngFor="let letter of guessArray; let i = index">
+			<input maxlength="1" [ngStyle]="{'background': getBgColor(i)}" [(ngModel)]="guessArray[i]"
+				(focus)="selectedInput = i" (input)="onInput(i, $event)" (keydown.enter)="checkGuess()"
+				[disabled]="gameOver" />
+		</ng-container>
+	</div>
+	<div class="keyboard">
+		<div class="keyboard-row">
+			<button type="button" *ngFor="let key of keyboardRows[0]" (click)="onVirtualKey(key)" [disabled]="gameOver"
+				[ngClass]="getKeyClass(key)">{{ key }}</button>
+			<button type="button" (click)="onDeleteKey()" [disabled]="gameOver" class="keyboard-row">⌫</button>
+		</div>
+		<div class="keyboard-row">
+			<button type="button" *ngFor="let key of keyboardRows[1]" (click)="onVirtualKey(key)" [disabled]="gameOver"
+				[ngClass]="getKeyClass(key)">{{ key }}</button>
+			<button type="button" (click)="onVirtualKey('Ñ')" [disabled]="gameOver"
+				[ngClass]="getKeyClass('Ñ')">Ñ</button>
+		</div>
+		<div class="keyboard-row">
+			<button type="button" *ngFor="let key of keyboardRows[2]" (click)="onVirtualKey(key)" [disabled]="gameOver"
+				[ngClass]="getKeyClass(key)">{{ key }}</button>
+		</div>
+	</div>
+	<button (click)="checkGuess()" [disabled]="gameOver">Probar</button>
+	<div *ngIf="message" class="message">{{ message }}</div>
+	<div *ngIf="gameOver" class="gameover">
+		<button (click)="reset()">Jugar de nuevo</button>
+	</div>
+	<div class="attempts-list">
+		<div *ngFor="let attempt of attemptsList" class="attempt-row">
+			<span *ngFor="let letter of attempt.split(''); let i = index" [ngClass]="{
+          'cell-correct': letter === word[i],
+          'cell-present': letter !== word[i] && word.includes(letter),
+          'cell-absent': !word.includes(letter)
+        }">{{ letter }}</span>
+		</div>
+	</div>
+	<div style="margin-bottom: 1em;">
+		<label>
+			<input type="checkbox" [(ngModel)]="showLengthInput" />
+			Elegir cantidad de letras
+		</label>
+		<div *ngIf="showLengthInput" style="margin-top: 0.5em;">
+			<label for="slider">Cantidad de letras: {{ wordLength }}</label>
+			<input id="slider" type="range" min="2" max="10" [(ngModel)]="wordLength" (input)="fetchWord(wordLength)" />
+			<input type="number" min="2" max="10" [(ngModel)]="wordLength" (change)="fetchWord(wordLength)"
+				style="width: 3em; margin-left: 0.5em;" />
+		</div>
+	</div>
+</div>
