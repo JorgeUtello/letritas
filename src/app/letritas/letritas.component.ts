@@ -41,7 +41,7 @@ export class LetritasComponent {
 	}
 
 	private tryFetchWord(length: number) {
-		this.http.get<{ word: string }>(`http://localhost:3000/api/random-word?length=${length}`).subscribe({
+		this.http.get<{ word: string }>(`https://api-letritas.vercel.app/api/random-word?length=${length}`).subscribe({
 			next: (data) => {
 				if (data.word && data.word.length > 0) {
 					this.word = data.word.toUpperCase();
@@ -163,7 +163,7 @@ export class LetritasComponent {
 		}
 		// Si no es igual, verifica si existe
 		const guessLower = guess.toLowerCase();
-		this.http.get<{ exists: boolean }>(`http://localhost:3000/api/random-word?word=${guessLower}`).subscribe({
+		this.http.get<{ exists: boolean }>(`https://api-letritas.vercel.app/api/random-word?word=${guessLower}`).subscribe({
 			next: (res) => {
 
 				if (!res.exists) {
