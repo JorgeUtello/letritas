@@ -4,7 +4,7 @@
 		<ng-container *ngFor="let letter of guessArray; let i = index">
 			<input maxlength="1" [ngStyle]="{'background': getBgColor(i)}" [(ngModel)]="guessArray[i]"
 				(focus)="selectedInput = i" (input)="onInput(i, $event)" (keydown.enter)="checkGuess()"
-				[disabled]="gameOver" />
+				[disabled]="gameOver" readonly />
 		</ng-container>
 	</div>
 	<!-- DESKTOP -->
@@ -39,7 +39,7 @@
 				<button type="button" (click)="onDeleteKey()" [disabled]="gameOver" class="keyboard-row">⌫</button>
 		</div>
 	</div>
-	<button (click)="checkGuess()" [disabled]="gameOver">Probar</button>
+	<button (click)="checkGuess()" [disabled]="gameOver">Enviar</button>
 	<div *ngIf="message" class="message">{{ message }}</div>
 	<div *ngIf="gameOver" class="gameover">
 		<button (click)="reset()">Jugar de nuevo</button>
