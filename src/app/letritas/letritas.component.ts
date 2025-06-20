@@ -21,17 +21,50 @@ export class LetritasComponent {
 	selectedInput = 0;
 	attemptsList: string[] = [];
 	keyStatus: { [key: string]: 'none' | 'correct' | 'present' | 'absent' } = {};
-	keyboardRows = [
-		['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-		['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ'],
-		['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
-	];
+	keyboardRows: string[][] = [];
 	public showLengthInput = false;
 
 	constructor(private http: HttpClient) {
 		// Inicializar guessArray con 3 recuadros vacíos desde el inicio
 		this.guessArray = Array(this.wordLength).fill('');
+		this.setKeyboardRows();
 		this.fetchWord();
+	}
+
+	private setKeyboardRows() {
+		const allKeys = [
+			'Q',
+			'W',
+			'E',
+			'R',
+			'T',
+			'Y',
+			'U',
+			'I',
+			'O',
+			'P',
+			'A',
+			'S',
+			'D',
+			'F',
+			'G',
+			'H',
+			'J',
+			'K',
+			'L',
+			'Ñ',
+			'Z',
+			'X',
+			'C',
+			'V',
+			'B',
+			'N',
+			'M',
+		];
+		this.keyboardRows = [];
+		for (let i = 0; i < allKeys.length; i += 7) {
+			this.keyboardRows.push(allKeys.slice(i, i + 7));
+		}
 	}
 
 	async fetchWord(length: number = this.wordLength) {
