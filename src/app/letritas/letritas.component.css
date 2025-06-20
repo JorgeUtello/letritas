@@ -217,3 +217,73 @@ button[disabled] {
 	color: #fff !important;
 	border: none;
 }
+
+@media (max-width: 600px) {
+  .letritas-container {
+    max-width: 98vw;
+    padding: 0.5rem;
+  }
+  .inputs {
+    gap: 2px;
+    margin-bottom: 0.7rem;
+  }
+  .inputs input {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
+  }
+  .keyboard {
+    margin: 1rem 0 0.5rem 0;
+  }
+  .keyboard-row button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.95rem;
+    margin: 0 0.5px;
+    padding: 0;
+  }
+  .key-delete {
+    width: 3.5rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+  .attempt-row span {
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
+  }
+  button {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.95rem;
+  }
+  .attempts-list {
+    margin: 1rem 0 0.3rem 0;
+    gap: 2px;
+  }
+  .message, .gameover {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .letritas-container {
+    padding: 0.2rem;
+  }
+  .inputs input, .attempt-row span {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .keyboard-row button {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.8rem;
+  }
+  .key-delete {
+    width: 2.5rem;
+    height: 1.5rem;
+    font-size: 0.8rem;
+  }
+}

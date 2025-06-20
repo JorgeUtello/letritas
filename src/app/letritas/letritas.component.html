@@ -16,8 +16,6 @@
 		<div class="keyboard-row">
 			<button type="button" *ngFor="let key of keyboardRows[1]" (click)="onVirtualKey(key)" [disabled]="gameOver"
 				[ngClass]="getKeyClass(key)">{{ key }}</button>
-			<button type="button" (click)="onVirtualKey('Ñ')" [disabled]="gameOver"
-				[ngClass]="getKeyClass('Ñ')">Ñ</button>
 		</div>
 		<div class="keyboard-row">
 			<button type="button" *ngFor="let key of keyboardRows[2]" (click)="onVirtualKey(key)" [disabled]="gameOver"
