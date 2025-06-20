@@ -245,7 +245,7 @@ button[disabled] {
 		display:  inline;
 	}
 	.keyboard-mobile button {
-		width: 10%;
+		min-width: 10%;
 		padding: 8px;
 		margin: 2px;
 	}
