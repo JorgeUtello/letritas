@@ -233,21 +233,23 @@ button[disabled] {
 	border: none;
 }
 
-@media (max-width: 600px) {
-.keyboard-row {
-    width: 100%;
-    text-align: center;
+.keyboard-mobile {
+	display:  none;
 }
+
+@media (max-width: 600px) {
+	.keyboard {
+		display: none;;
+	}
+	.keyboard-mobile {
+		display:  inline;
+	}
+	.keyboard-mobile button {
+		width: 10%;
+		padding: 8px;
+		margin: 2px;
+	}
 }
 
 @media (max-width: 400px) {
-  .letritas-container {
-    padding: 0.2rem;
-  }
-  .keyboard {
-    /* max-width: 320px; */
-  }
-  .keyboard-row {
-    gap: 4px;
-  }
 }

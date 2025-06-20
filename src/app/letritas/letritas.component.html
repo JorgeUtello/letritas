@@ -7,7 +7,24 @@
 				[disabled]="gameOver" />
 		</ng-container>
 	</div>
+	<!-- DESKTOP -->
 	<div class="keyboard">
+		<div class="keyboard-row">
+			<button type="button" *ngFor="let key of keyboardRows[0]" (click)="onVirtualKey(key)" [disabled]="gameOver"
+				[ngClass]="getKeyClass(key)">{{ key }}</button>
+			<button type="button" (click)="onDeleteKey()" [disabled]="gameOver" class="keyboard-row">⌫</button>
+		</div>
+		<div class="keyboard-row">
+			<button type="button" *ngFor="let key of keyboardRows[1]" (click)="onVirtualKey(key)" [disabled]="gameOver"
+				[ngClass]="getKeyClass(key)">{{ key }}</button>
+		</div>
+		<div class="keyboard-row">
+			<button type="button" *ngFor="let key of keyboardRows[2]" (click)="onVirtualKey(key)" [disabled]="gameOver"
+				[ngClass]="getKeyClass(key)">{{ key }}</button>
+		</div>
+	</div>
+	<!-- MOBILE -->
+	<div class="keyboard-mobile">
 		<div class="keyboard-row">
 			<button type="button" *ngFor="let key of keyboardRows[0]" (click)="onVirtualKey(key)" [disabled]="gameOver"
 				[ngClass]="getKeyClass(key)">{{ key }}</button>

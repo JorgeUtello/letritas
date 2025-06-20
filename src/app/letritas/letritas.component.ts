@@ -39,6 +39,14 @@ export class LetritasComponent {
 		this.keyboardRows = [row1, row2, row3];
 	}
 
+	private setKeyboardRowsMobile() {
+		// Teclado tipo QWERTY, 3 filas, 10 letras la primera, 10 la segunda, 9 la tercera (incluyendo la Ñ)
+		const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
+		const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ'];
+		const row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+		this.keyboardRows = [row1, row2, row3];
+	}
+
 	async fetchWord(length: number = this.wordLength) {
 		this.loading = true;
 		this.message = '';
