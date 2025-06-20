@@ -245,9 +245,10 @@ button[disabled] {
 		display:  inline;
 	}
 	.keyboard-mobile button {
-		min-width: 10%;
+		min-width: 5%;
 		padding: 8px;
 		margin: 2px;
+		max-width: 10%;
 	}
 }
 
