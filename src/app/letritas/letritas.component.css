@@ -5,7 +5,7 @@
 	color: #222;
 	border-radius: 12px;
 	box-shadow: 0 2px 12px #0002;
-	padding: 1.5rem;
+	padding: 1rem;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -286,8 +286,7 @@ button[disabled] {
 
 .reload-container {
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
+  right: 1rem;
   z-index: 10;
 }
 .reload-btn {
