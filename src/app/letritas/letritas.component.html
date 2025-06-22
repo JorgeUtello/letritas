@@ -1,5 +1,8 @@
 <div class="letritas-container">
 	<h2>¡Adivina la palabra!</h2>
+	<div class="timer-container">
+		<span>{{ timerFormatted }}</span>
+	</div>
 	<div class="inputs">
 		<ng-container *ngFor="let letter of guessArray; let i = index">
 			<input maxlength="1" [ngStyle]="{'background': getBgColor(i)}" [(ngModel)]="guessArray[i]"

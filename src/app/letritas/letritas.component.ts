@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -23,12 +23,20 @@ export class LetritasComponent {
 	keyStatus: { [key: string]: 'none' | 'correct' | 'present' | 'absent' } = {};
 	keyboardRows: string[][] = [];
 	public showLengthInput = false;
+	public timer = 0; // en décimas de segundo
+	public timerVisible = true;
+	private timerInterval: any;
+	public isTimerRunning = false;
 
-	constructor(private http: HttpClient) {
+	constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {
 		// Inicializar guessArray con 3 recuadros vacíos desde el inicio
 		this.guessArray = Array(this.wordLength).fill('');
 		this.setKeyboardRows();
 		this.fetchWord();
+	}
+
+	ngOnInit() {
+		this.resetTimer();
 	}
 
 	private setKeyboardRows() {
@@ -116,6 +124,9 @@ export class LetritasComponent {
 	}
 
 	onInput(i: number, event: any) {
+		if (!this.isTimerRunning && this.timer === 0) {
+			this.startTimer();
+		}
 		this.selectedInput = i;
 		// Autocompletar con la letra ya puesta si viene del teclado virtual
 		let value = event.target.value.toUpperCase();
@@ -131,6 +142,9 @@ export class LetritasComponent {
 	}
 
 	onVirtualKey(letter: string) {
+		if (!this.isTimerRunning && this.timer === 0) {
+			this.startTimer();
+		}
 		this.guessArray[this.selectedInput] = letter;
 		// Mover al siguiente input automáticamente
 		if (this.selectedInput < this.word.length - 1) {
@@ -156,6 +170,38 @@ export class LetritasComponent {
 		});
 	}
 
+	resetTimer() {
+		this.stopTimer();
+		this.timer = 0;
+		this.isTimerRunning = false;
+		this.timerVisible = true;
+	}
+
+	startTimer() {
+		if (this.isTimerRunning) return;
+		this.isTimerRunning = true;
+		this.timerInterval = setInterval(() => {
+			this.timer++;
+			this.cdr.detectChanges();
+		}, 100);
+	}
+
+	stopTimer() {
+		if (this.timerInterval) {
+			clearInterval(this.timerInterval);
+			this.timerInterval = null;
+		}
+		this.isTimerRunning = false;
+	}
+
+	get timerFormatted(): string {
+		const totalDecimas = this.timer;
+		const minutes = Math.floor(totalDecimas / 600);
+		const seconds = Math.floor((totalDecimas % 600) / 10);
+		const decimas = totalDecimas % 10;
+		return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${decimas}`;
+	}
+
 	checkGuess() {
 		if (this.guessArray.some((l) => !l)) {
 			this.message = 'Completa la palabra.';
@@ -172,6 +218,7 @@ export class LetritasComponent {
 			}
 			this.message = `¡Correcto! Lo lograste en ${this.attempts} intento(s).`;
 			this.gameOver = true;
+			this.stopTimer();
 			return;
 		}
 		// Si no es igual, verifica si existe
@@ -194,6 +241,7 @@ export class LetritasComponent {
 				if (this.attempts >= 6) {
 					this.message = `Perdiste. La palabra era: ${this.word}`;
 					this.gameOver = true;
+					this.stopTimer();
 				} else {
 					this.message = 'Intenta de nuevo.';
 					this.guessArray = Array(this.word.length).fill('');
@@ -275,11 +323,13 @@ export class LetritasComponent {
 		this.attempts = 0;
 		this.keyStatus = {};
 		this.attemptsList = [];
+		this.resetTimer();
 	}
 
 	giveUp() {
 		this.message = `La palabra era: ${this.word}`;
 		this.gameOver = true;
+		this.stopTimer();
 	}
 
 	reloadPage() {
