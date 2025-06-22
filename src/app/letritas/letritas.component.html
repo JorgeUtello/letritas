@@ -21,6 +21,7 @@
 		<div class="keyboard-row">
 			<button type="button" *ngFor="let key of keyboardRows[2]" (click)="onVirtualKey(key)" [disabled]="gameOver"
 				[ngClass]="getKeyClass(key)">{{ key }}</button>
+				<button type="button" (click)="checkGuess()" [disabled]="gameOver" class="keyboard-row send">ENVIAR</button>
 		</div>
 	</div>
 	<!-- MOBILE -->
@@ -39,7 +40,7 @@
 				<button type="button" (click)="onDeleteKey()" [disabled]="gameOver" class="keyboard-row">⌫</button>
 		</div>
 	</div>
-	<button (click)="checkGuess()" [disabled]="gameOver">Enviar</button>
+	<!--button (click)="checkGuess()" [disabled]="gameOver">Enviar</button-->
 	<div *ngIf="message" class="message">{{ message }}</div>
 	<div *ngIf="gameOver" class="gameover">
 		<button (click)="reset()">Jugar de nuevo</button>
