@@ -62,7 +62,18 @@
 			<label for="slider">Cantidad de letras: {{ wordLength }}</label>
 			<input id="slider" type="range" min="2" max="10" [(ngModel)]="wordLength" (input)="fetchWord(wordLength)" />
 			<input type="number" min="2" max="10" [(ngModel)]="wordLength" (change)="fetchWord(wordLength)"
-				style="width: 3em; margin-left: 0.5em;" />
+			style="width: 3em; margin-left: 0.5em;" />
 		</div>
+	</div>
+	<div *ngIf="!gameOver" class="giveup-container">
+		<button (click)="giveUp()">Me rindo</button>
+	</div>
+	<div class="reload-container">
+		<button class="reload-btn" (click)="reloadPage()" title="Recargar">
+			<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M11 3a8 8 0 1 1-7.06 4.47" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+				<polyline points="3 7 7 7 7 3" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</button>
 	</div>
 </div>

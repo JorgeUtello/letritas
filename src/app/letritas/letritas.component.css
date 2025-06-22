@@ -255,3 +255,59 @@ button[disabled] {
 
 @media (max-width: 400px) {
 }
+
+.giveup-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+.giveup-container button {
+  background: none;
+  color: #888;
+  border: none;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.2rem 0.7rem;
+  transition: color 0.2s;
+}
+.giveup-container button:hover {
+  color: #222;
+  background: #f3f3f3;
+  border-radius: 4px;
+}
+@media (max-width: 600px) {
+  .giveup-container button {
+    font-size: 0.9rem;
+    padding: 0.15rem 0.5rem;
+  }
+}
+
+.reload-container {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 10;
+}
+.reload-btn {
+  background: none;
+  border: none;
+  padding: 0.2rem;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+  transition: background 0.2s;
+}
+.reload-btn svg {
+  display: block;
+}
+.reload-btn:hover svg path {
+  stroke: #222;
+}
+@media (max-width: 600px) {
+  .reload-container {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}

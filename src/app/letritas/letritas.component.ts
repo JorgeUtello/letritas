@@ -276,4 +276,13 @@ export class LetritasComponent {
 		this.keyStatus = {};
 		this.attemptsList = [];
 	}
+
+	giveUp() {
+		this.message = `La palabra era: ${this.word}`;
+		this.gameOver = true;
+	}
+
+	reloadPage() {
+		window.location.reload();
+	}
 }
