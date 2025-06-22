@@ -27,6 +27,7 @@ export class LetritasComponent {
 	public timerVisible = true;
 	private timerInterval: any;
 	public isTimerRunning = false;
+	public showWordLengthPopup = false;
 
 	constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {
 		// Inicializar guessArray con 3 recuadros vacíos desde el inicio
@@ -203,6 +204,13 @@ export class LetritasComponent {
 	}
 
 	checkGuess() {
+		// Si el usuario cambió la cantidad de letras, actualiza los inputs antes de validar
+		if (this.guessArray.length !== this.wordLength) {
+			this.guessArray = Array(this.wordLength).fill('');
+			this.selectedInput = 0;
+			this.message = '';
+			return;
+		}
 		if (this.guessArray.some((l) => !l)) {
 			this.message = 'Completa la palabra.';
 			return;
@@ -317,6 +325,7 @@ export class LetritasComponent {
 	}
 
 	reset() {
+		this.fetchWord();
 		this.guessArray = Array(this.word.length).fill('');
 		this.message = '';
 		this.gameOver = false;
@@ -334,5 +343,27 @@ export class LetritasComponent {
 
 	reloadPage() {
 		window.location.reload();
+	}
+
+	openWordLengthPopup() {
+		this.showWordLengthPopup = true;
+	}
+
+	closeWordLengthPopup() {
+		this.showWordLengthPopup = false;
+	}
+
+	onWordLengthChange() {
+		this.fetchWord(this.wordLength);
+		this.closeWordLengthPopup();
+	}
+
+	onLengthConfirm() {
+		this.showWordLengthPopup = false;
+	}
+
+	applyWordLength() {
+		this.showWordLengthPopup = false;
+		this.reset(); // Reinicia el juego con la nueva cantidad de letras
 	}
 }

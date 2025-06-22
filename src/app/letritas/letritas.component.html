@@ -57,20 +57,26 @@
         }">{{ letter }}</span>
 		</div>
 	</div>
-	<div style="margin-bottom: 1em;">
-		<label>
-			<input type="checkbox" [(ngModel)]="showLengthInput" />
-			Elegir cantidad de letras
-		</label>
-		<div *ngIf="showLengthInput" style="margin-top: 0.5em;">
-			<label for="slider">Cantidad de letras: {{ wordLength }}</label>
-			<input id="slider" type="range" min="2" max="10" [(ngModel)]="wordLength" (input)="fetchWord(wordLength)" />
-			<input type="number" min="2" max="10" [(ngModel)]="wordLength" (change)="fetchWord(wordLength)"
-			style="width: 3em; margin-left: 0.5em;" />
-		</div>
+	<div *ngIf="!gameOver" class="bottom-bar minimal-bar">
+		<button class="minimal-btn" (click)="showWordLengthPopup = true">Elegir cantidad de letras</button>
+		<span class="bar-separator">|</span>
+		<button class="minimal-btn" (click)="giveUp()">Me rindo</button>
 	</div>
-	<div *ngIf="!gameOver" class="giveup-container">
-		<button (click)="giveUp()">Me rindo</button>
+	<div *ngIf="showWordLengthPopup" class="popup-overlay">
+		<div class="popup-content">
+			<p>Elige la cantidad de letras para la palabra a adivinar. Puedes seleccionar entre 2 y 10 letras.</p>
+			<label for="slider">Cantidad de letras: {{ wordLength }}</label>
+			<input id="slider" type="range" min="2" max="10" [(ngModel)]="wordLength" />
+			<input type="number" min="2" max="10" [(ngModel)]="wordLength" style="width: 3em; margin-left: 0.5em;" />
+			<button class="go-btn" (click)="applyWordLength()" title="Actualizar juego">
+				<svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;">
+					<path d="M5 10h10M10 5l5 5-5 5" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</button>
+			<div style="margin-top:1em; text-align:right;">
+				<button (click)="onLengthConfirm()">Cerrar</button>
+			</div>
+		</div>
 	</div>
 	<div class="reload-container">
 		<button class="reload-btn" (click)="reloadPage()" title="Recargar">
