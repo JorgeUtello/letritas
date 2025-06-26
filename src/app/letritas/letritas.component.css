@@ -250,6 +250,7 @@ button[disabled] {
 	}
 	.keyboard-mobile {
 		display:  inline;
+		margin-bottom: 15px;
 	}
 	.keyboard-mobile button {
 		min-width: 10%;
