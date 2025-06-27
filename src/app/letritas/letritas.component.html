@@ -24,7 +24,7 @@
 		<div class="keyboard-row">
 			<button type="button" *ngFor="let key of keyboardRows[2]" (click)="onVirtualKey(key)" [disabled]="gameOver"
 				[ngClass]="getKeyClass(key)">{{ key }}</button>
-				<button type="button" (click)="checkGuess()" [disabled]="gameOver" class="keyboard-row send">ENVIAR</button>
+			<button type="button" (click)="checkGuess()" [disabled]="gameOver" class="keyboard-row send">ENVIAR</button>
 		</div>
 	</div>
 	<!-- MOBILE -->
@@ -40,7 +40,7 @@
 		<div class="keyboard-row">
 			<button type="button" *ngFor="let key of keyboardRows[2]" (click)="onVirtualKey(key)" [disabled]="gameOver"
 				[ngClass]="getKeyClass(key)">{{ key }}</button>
-				<button type="button" (click)="onDeleteKey()" [disabled]="gameOver" class="keyboard-row">⌫</button>
+			<button type="button" (click)="onDeleteKey()" [disabled]="gameOver" class="keyboard-row">⌫</button>
 		</div>
 	</div>
 	<button class="keyboard-mobile" (click)="checkGuess()" [disabled]="gameOver">Enviar</button>
@@ -74,8 +74,10 @@
 			<input id="slider" type="range" min="2" max="10" [(ngModel)]="wordLength" />
 			<input type="number" min="2" max="10" [(ngModel)]="wordLength" style="width: 3em; margin-left: 0.5em;" />
 			<button class="go-btn" (click)="applyWordLength()" title="Actualizar juego">
-				<svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;">
-					<path d="M5 10h10M10 5l5 5-5 5" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				<svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+					style="vertical-align:middle;">
+					<path d="M5 10h10M10 5l5 5-5 5" stroke="#333" stroke-width="2" stroke-linecap="round"
+						stroke-linejoin="round" />
 				</svg>
 			</button>
 			<div style="margin-top:1em; text-align:right;">
@@ -86,8 +88,10 @@
 	<div class="reload-container">
 		<button class="reload-btn" (click)="reloadPage()" title="Recargar">
 			<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M11 3a8 8 0 1 1-7.06 4.47" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-				<polyline points="3 7 7 7 7 3" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M11 3a8 8 0 1 1-7.06 4.47" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round"
+					stroke-linejoin="round" />
+				<polyline points="3 7 7 7 7 3" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round"
+					stroke-linejoin="round" />
 			</svg>
 		</button>
 	</div>
