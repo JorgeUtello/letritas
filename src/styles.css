@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+.dark-mode {
+	background-color: #000000c4;
+}
+
+.dark-mode,
+.dark-mode .letritas-container {
+	background: #000000c4 !important;
+	color: #f3f3f3 !important;
+}
+
+.dark-mode .letritas-container {
+	box-shadow: 0 2px 12px #0008;
+}
+
+.dark-mode .inputs input,
+.dark-mode .attempt-row span {
+	background: #222 !important;
+	color: #f3f3f3 !important;
+	border: 1.5px solid #444;
+}
+
+.dark-mode .inputs input:focus {
+	border: 2px solid #6aaa64;
+	box-shadow: 0 0 0 2px #6aaa6433;
+}
+
+.dark-mode .keyboard-row button,
+.dark-mode .keyboard-mobile button {
+	background: #444 !important;
+	color: #fff !important;
+}
+
+.dark-mode .keyboard-row button.key-correct {
+	background: #388e3c !important;
+}
+
+.dark-mode .keyboard-row button.key-present {
+	background: #b59f3b !important;
+}
+
+.dark-mode .keyboard-row button.key-absent {
+	background: #333 !important;
+}
+
+.dark-mode .minimal-btn {
+	color: #f3f3f3 !important;
+}
+
+.dark-mode .bar-separator {
+	color: #888 !important;
+}
+
+.dark-mode .popup-content {
+	background: #232323 !important;
+	color: #f3f3f3 !important;
+	border: 1px solid #444;
+}
+
+.dark-mode .reload-btn svg path {
+	stroke: #f3f3f3 !important;
+}
+
+.dark-mode .timer-container {
+	color: #bbb !important;
+	background: none;
+}

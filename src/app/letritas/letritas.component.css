@@ -51,18 +51,35 @@
 
 .send {
 	width: auto !important;
-    font-size: 13px ! IMPORTANT;
-    background-color: #6aaa64 !important;
-    padding-top: 16px;
+	font-size: 13px ! IMPORTANT;
+	background-color: #6aaa64 !important;
+	padding-top: 16px;
 }
 
 @keyframes shake {
-	0% { transform: translateX(0); }
-	20% { transform: translateX(-6px); }
-	40% { transform: translateX(6px); }
-	60% { transform: translateX(-6px); }
-	80% { transform: translateX(6px); }
-	100% { transform: translateX(0); }
+	0% {
+		transform: translateX(0);
+	}
+
+	20% {
+		transform: translateX(-6px);
+	}
+
+	40% {
+		transform: translateX(6px);
+	}
+
+	60% {
+		transform: translateX(-6px);
+	}
+
+	80% {
+		transform: translateX(6px);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
 }
 
 .keyboard {
@@ -241,154 +258,169 @@ button[disabled] {
 }
 
 .keyboard-mobile {
-	display:  none;
+	display: none;
 }
 
 @media (max-width: 600px) {
 	.keyboard {
-		display: none;;
+		display: none;
+		;
 	}
+
 	.keyboard-mobile {
-		display:  inline;
+		display: inline;
 		margin-bottom: 15px;
 	}
+
 	.keyboard-mobile button {
 		min-width: 10%;
-        padding: 10px;
-        margin: 1px;
-        max-width: 15%;
-        width: auto ! IMPORTANT;
+		padding: 10px;
+		margin: 1px;
+		max-width: 15%;
+		width: auto ! IMPORTANT;
 	}
 }
 
-@media (max-width: 400px) {
-}
+@media (max-width: 400px) {}
 
 .giveup-container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 0.5rem;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 0.5rem;
 }
+
 .giveup-container button {
-  background: none;
-  color: #888;
-  border: none;
-  font-size: 0.95rem;
-  text-decoration: underline;
-  cursor: pointer;
-  padding: 0.2rem 0.7rem;
-  transition: color 0.2s;
+	background: none;
+	color: #888;
+	border: none;
+	font-size: 0.95rem;
+	text-decoration: underline;
+	cursor: pointer;
+	padding: 0.2rem 0.7rem;
+	transition: color 0.2s;
 }
+
 .giveup-container button:hover {
-  color: #222;
-  background: #f3f3f3;
-  border-radius: 4px;
+	color: #222;
+	background: #f3f3f3;
+	border-radius: 4px;
 }
+
 @media (max-width: 600px) {
-  .giveup-container button {
-    font-size: 0.9rem;
-    padding: 0.15rem 0.5rem;
-  }
+	.giveup-container button {
+		font-size: 0.9rem;
+		padding: 0.15rem 0.5rem;
+	}
 }
 
 .reload-container {
-  position: absolute;
-  right: 1rem;
-  z-index: 10;
+	position: absolute;
+	right: 1rem;
+	z-index: 10;
 }
+
 .reload-btn {
-  background: none;
-  border: none;
-  padding: 0px;
-  margin: 0 !important;
-  cursor: pointer;
-  box-shadow: none;
-  outline: none;
-  transition: background 0.2s;
+	background: none;
+	border: none;
+	padding: 0px;
+	margin: 0 !important;
+	cursor: pointer;
+	box-shadow: none;
+	outline: none;
+	transition: background 0.2s;
 }
+
 .reload-btn svg {
-  display: block;
+	display: block;
 }
+
 .reload-btn:hover svg path {
-  stroke: #222;
+	stroke: #222;
 }
+
 @media (max-width: 600px) {
-  .reload-container {
-    top: 0.5rem;
-    right: 0.5rem;
-  }
+	.reload-container {
+		top: 0.5rem;
+		right: 0.5rem;
+	}
 }
 
 .timer-container {
-  position: absolute;
-  top: 0.7rem;
-  left: 1rem;
-  font-size: 0.95rem;
-  color: #888;
-  background: none;
-  padding: 0.1rem 0.5rem;
-  border-radius: 4px;
-  opacity: 0.7;
-  z-index: 10;
-  pointer-events: none;
+	position: absolute;
+	top: 0.7rem;
+	left: 1rem;
+	font-size: 0.95rem;
+	color: #888;
+	background: none;
+	padding: 0.1rem 0.5rem;
+	border-radius: 4px;
+	opacity: 0.7;
+	z-index: 10;
+	pointer-events: none;
 }
+
 @media (max-width: 600px) {
-  .timer-container {
-    top: 0.3rem;
-    left: 0.5rem;
-    font-size: 0.85rem;
-  }
+	.timer-container {
+		top: 0.3rem;
+		left: 0.5rem;
+		font-size: 0.85rem;
+	}
 }
 
 .minimal-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
-  margin-top: 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5em;
+	margin-top: 1em;
 }
+
 .minimal-btn {
-  background: none;
-  border: none;
-  color: #333;
-  font-size: 12px;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: none;
-  outline: none;
-  font-family: inherit;
+	background: none;
+	border: none;
+	color: #333;
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	text-decoration: none;
+	box-shadow: none;
+	outline: none;
+	font-family: inherit;
 }
+
 .minimal-btn:active,
 .minimal-btn:focus {
-  outline: none;
-  text-decoration: none;
+	outline: none;
+	text-decoration: none;
 }
+
 .bar-separator {
-  color: #bbb;
-  font-size: 12px;
-  user-select: none;
+	color: #bbb;
+	font-size: 12px;
+	user-select: none;
 }
 
 .go-btn {
-  background: none;
-  border: none;
-  padding: 0 0.5em;
-  margin-left: 0.5em;
-  cursor: pointer;
-  vertical-align: middle;
-  outline: none;
-  box-shadow: none;
-  display: inline-flex;
-  align-items: center;
+	background: none;
+	border: none;
+	padding: 0 0.5em;
+	margin-left: 0.5em;
+	cursor: pointer;
+	vertical-align: middle;
+	outline: none;
+	box-shadow: none;
+	display: inline-flex;
+	align-items: center;
 }
+
 .go-btn svg {
-  display: block;
-  margin-bottom: 10px;
+	display: block;
+	margin-bottom: 10px;
 }
+
 .go-btn:active,
 .go-btn:focus {
-  outline: none;
+	outline: none;
 }

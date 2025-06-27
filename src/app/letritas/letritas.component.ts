@@ -28,6 +28,7 @@ export class LetritasComponent {
 	private timerInterval: any;
 	public isTimerRunning = false;
 	public showWordLengthPopup = false;
+	darkMode = false;
 
 	constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {
 		// Inicializar guessArray con 3 recuadros vacíos desde el inicio
@@ -38,6 +39,17 @@ export class LetritasComponent {
 
 	ngOnInit() {
 		this.resetTimer();
+		// Restaurar modo oscuro desde cookie
+		const dark = this.getCookie('letritas-dark');
+		if (dark === '1') {
+			this.darkMode = true;
+			document.body.classList.add('dark-mode');
+		}
+		// Restaurar cantidad de letras desde cookie
+		const letras = this.getCookie('letritas-length');
+		if (letras && !isNaN(+letras)) {
+			this.wordLength = +letras;
+		}
 	}
 
 	private setKeyboardRows() {
@@ -71,7 +83,7 @@ export class LetritasComponent {
 					this.selectedInput = 0;
 					this.loading = false;
 					this.message = '';
-					console.log('Palabra elegida:', this.word);
+					// console.log('Palabra elegida:', this.word);
 				} else {
 					this.handleWordNotFound(length);
 				}
@@ -363,7 +375,34 @@ export class LetritasComponent {
 	}
 
 	applyWordLength() {
+		this.setCookie('letritas-length', String(this.wordLength));
 		this.showWordLengthPopup = false;
 		this.reset(); // Reinicia el juego con la nueva cantidad de letras
+	}
+
+	// Alterna el modo oscuro y guarda preferencia en cookie
+	toggleDarkMode() {
+		this.darkMode = !this.darkMode;
+		setTimeout(() => {
+			if (this.darkMode) {
+				document.body.classList.add('dark-mode');
+				this.setCookie('letritas-dark', '1');
+			} else {
+				document.body.classList.remove('dark-mode');
+				this.setCookie('letritas-dark', '0');
+			}
+		}, 0);
+	}
+
+	setCookie(name: string, value: string) {
+		const d = new Date();
+		d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000)); // 365 días
+		const expires = "expires=" + d.toUTCString();
+		document.cookie = `${name}=${value};${expires};path=/`;
+	}
+
+	getCookie(name: string): string | null {
+		const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+		return v ? v[2] : null;
 	}
 }

@@ -58,6 +58,11 @@
 		</div>
 	</div>
 	<div *ngIf="!gameOver" class="bottom-bar minimal-bar">
+		<button class="minimal-btn" (click)="toggleDarkMode()">
+			<span *ngIf="!darkMode">🌙 Modo oscuro</span>
+			<span *ngIf="darkMode">☀️ Modo claro</span>
+		</button>
+		<span class="bar-separator">|</span>
 		<button class="minimal-btn" (click)="showWordLengthPopup = true">Elegir cantidad de letras</button>
 		<span class="bar-separator">|</span>
 		<button class="minimal-btn" (click)="giveUp()">Me rindo</button>
