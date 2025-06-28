@@ -3,7 +3,7 @@
 	<div class="timer-container">
 		<span>{{ timerFormatted }}</span>
 	</div>
-	<div class="inputs">
+	<div class="inputs emptys">
 		<ng-container *ngFor="let letter of guessArray; let i = index">
 			<input maxlength="1" [ngStyle]="{'background': getBgColor(i)}" [(ngModel)]="guessArray[i]"
 				(focus)="selectedInput = i" (input)="onInput(i, $event)" (keydown.enter)="checkGuess()"

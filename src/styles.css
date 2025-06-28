@@ -15,9 +15,12 @@
 
 .dark-mode .inputs input,
 .dark-mode .attempt-row span {
-	background: #222 !important;
 	color: #f3f3f3 !important;
 	border: 1.5px solid #444;
+}
+
+.dark-mode .emptys input {
+	background: #222 !important;
 }
 
 .dark-mode .inputs input:focus {
