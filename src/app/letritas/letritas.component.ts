@@ -28,6 +28,7 @@ export class LetritasComponent {
 	private timerInterval: any;
 	public isTimerRunning = false;
 	public showWordLengthPopup = false;
+	public showRulesPopup = false;
 	darkMode = false;
 
 	constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {

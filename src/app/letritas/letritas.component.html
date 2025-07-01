@@ -63,9 +63,34 @@
 			<span *ngIf="darkMode">☀️ Modo claro</span>
 		</button>
 		<span class="bar-separator">|</span>
+		<button class="minimal-btn" (click)="showRulesPopup = true">Reglas</button>
+		<span class="bar-separator">|</span>
 		<button class="minimal-btn" (click)="showWordLengthPopup = true">Elegir cantidad de letras</button>
 		<span class="bar-separator">|</span>
 		<button class="minimal-btn" (click)="giveUp()">Me rindo</button>
+	</div>
+	<div *ngIf="showRulesPopup" class="popup-overlay">
+		<div class="popup-content">
+			<h3>Reglas del juego</h3>
+			<ul style="text-align:left; font-size:15px; line-height:1.5;">
+				<li>Debes adivinar la palabra secreta de la cantidad de letras que elijas.</li>
+				<li>Solo puedes ingresar palabras reales en español.</li>
+				<li>Después de cada intento, las letras se marcarán con colores:</li>
+				<ul>
+					<li><span style="color:#fff; background:#6aaa64; padding:2px 6px; border-radius:3px;font-size: 11px;">Verde</span> 
+						letra correcta en la posición correcta.</li>
+					<li><span style="color:#fff; background:#c9b458; padding:2px 6px; border-radius:3px;font-size: 11px;">Amarillo</span> 
+						letra está en la palabra pero en otra posición.</li>
+					<li><span style="color:#fff; background:#222; padding:2px 6px; border-radius:3px;font-size: 11px;">Gris</span> 
+						letra no está en la palabra.</li>
+				</ul>
+				<li>Tienes hasta 6 intentos para adivinar la palabra.</li>
+				<li>Puedes rendirte en cualquier momento para ver la respuesta.</li>
+			</ul>
+			<div style="margin-top:1em; text-align:right;">
+				<button (click)="showRulesPopup = false">Cerrar</button>
+			</div>
+		</div>
 	</div>
 	<div *ngIf="showWordLengthPopup" class="popup-overlay">
 		<div class="popup-content">

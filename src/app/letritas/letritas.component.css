@@ -424,3 +424,7 @@ button[disabled] {
 .go-btn:focus {
 	outline: none;
 }
+
+.popup-overlay {
+    margin-top: 20px;
+}
