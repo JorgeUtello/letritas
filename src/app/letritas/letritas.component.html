@@ -1,7 +1,9 @@
 <div class="letritas-container">
-	<h2>¡Adivina la palabra!</h2>
-	<div class="timer-container">
-		<span>{{ timerFormatted }}</span>
+	<div class="header">
+		<div class="timer-container">
+			<span>{{ timerFormatted }}</span>
+		</div>
+		<div class="head-titulo">¡Adivina la palabra!</div>
 	</div>
 	<div class="inputs emptys">
 		<ng-container *ngFor="let letter of guessArray; let i = index">
@@ -11,27 +13,11 @@
 		</ng-container>
 	</div>
 	<!-- DESKTOP -->
-	<div class="keyboard">
-		<div class="keyboard-row">
-			<button type="button" *ngFor="let key of keyboardRows[0]" (click)="onVirtualKey(key)" [disabled]="gameOver"
-				[ngClass]="getKeyClass(key)">{{ key }}</button>
-			<button type="button" (click)="onDeleteKey()" [disabled]="gameOver" class="keyboard-row">⌫</button>
-		</div>
-		<div class="keyboard-row">
-			<button type="button" *ngFor="let key of keyboardRows[1]" (click)="onVirtualKey(key)" [disabled]="gameOver"
-				[ngClass]="getKeyClass(key)">{{ key }}</button>
-		</div>
-		<div class="keyboard-row">
-			<button type="button" *ngFor="let key of keyboardRows[2]" (click)="onVirtualKey(key)" [disabled]="gameOver"
-				[ngClass]="getKeyClass(key)">{{ key }}</button>
-			<button type="button" (click)="checkGuess()" [disabled]="gameOver" class="keyboard-row send">ENVIAR</button>
-		</div>
-	</div>
-	<!-- MOBILE -->
 	<div class="keyboard-mobile">
 		<div class="keyboard-row">
 			<button type="button" *ngFor="let key of keyboardRows[0]" (click)="onVirtualKey(key)" [disabled]="gameOver"
 				[ngClass]="getKeyClass(key)">{{ key }}</button>
+			<button type="button" (click)="onDeleteKey()" [disabled]="gameOver" class="keyboard-row show-in-desktop">⌫</button>
 		</div>
 		<div class="keyboard-row">
 			<button type="button" *ngFor="let key of keyboardRows[1]" (click)="onVirtualKey(key)" [disabled]="gameOver"
@@ -40,10 +26,11 @@
 		<div class="keyboard-row">
 			<button type="button" *ngFor="let key of keyboardRows[2]" (click)="onVirtualKey(key)" [disabled]="gameOver"
 				[ngClass]="getKeyClass(key)">{{ key }}</button>
-			<button type="button" (click)="onDeleteKey()" [disabled]="gameOver" class="keyboard-row">⌫</button>
+			<button type="button" (click)="checkGuess()" [disabled]="gameOver" class="keyboard-row send show-in-desktop">ENVIAR</button>
+			<button type="button" (click)="onDeleteKey()" [disabled]="gameOver" class="keyboard-row show-in-mobile">⌫</button>
 		</div>
 	</div>
-	<button class="keyboard-mobile" (click)="checkGuess()" [disabled]="gameOver">Enviar</button>
+	<button class="keyboard-mobile show-in-mobile" (click)="checkGuess()" [disabled]="gameOver">Enviar</button>
 	<div *ngIf="message" class="message">{{ message }}</div>
 	<div *ngIf="gameOver" class="gameover">
 		<button (click)="reset()">Jugar de nuevo</button>
@@ -70,7 +57,7 @@
 		<button class="minimal-btn" (click)="giveUp()">Me rindo</button>
 	</div>
 	<div *ngIf="showRulesPopup" class="popup-overlay">
-		<div class="popup-content">
+		<div class="popup-content p-4">
 			<h3>Reglas del juego</h3>
 			<ul style="text-align:left; font-size:15px; line-height:1.5;">
 				<li>Debes adivinar la palabra secreta de la cantidad de letras que elijas.</li>
@@ -93,20 +80,18 @@
 		</div>
 	</div>
 	<div *ngIf="showWordLengthPopup" class="popup-overlay">
-		<div class="popup-content">
-			<p>Elige la cantidad de letras para la palabra a adivinar. Puedes seleccionar entre 2 y 10 letras.</p>
-			<label for="slider">Cantidad de letras: {{ wordLength }}</label>
-			<input id="slider" type="range" min="2" max="10" [(ngModel)]="wordLength" />
-			<input type="number" min="2" max="10" [(ngModel)]="wordLength" style="width: 3em; margin-left: 0.5em;" />
-			<button class="go-btn" (click)="applyWordLength()" title="Actualizar juego">
-				<svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
-					style="vertical-align:middle;">
-					<path d="M5 10h10M10 5l5 5-5 5" stroke="#333" stroke-width="2" stroke-linecap="round"
-						stroke-linejoin="round" />
-				</svg>
-			</button>
+		<div class="popup-content p-4">
+			<p>Elige la cantidad de letras para la palabra a adivinar. Puedes seleccionar entre 4 y 10 letras.</p>
+			<div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+				<button *ngFor="let n of [4,5,6,7,8,9,10]"
+						(click)="wordLength = n; applyWordLength()"
+						[ngClass]="{'btn': true, 'btn-success': true, 'active': wordLength === n}"
+						style="min-width:2.5rem; min-height:2.5rem; font-size:1.3rem; border-radius: 4px; font-weight: bold;">
+					{{ n }}
+				</button>
+			</div>
 			<div style="margin-top:1em; text-align:right;">
-				<button (click)="onLengthConfirm()">Cerrar</button>
+				<button class="btn btn-secondary btn-sm" (click)="onLengthConfirm()">Cerrar</button>
 			</div>
 		</div>
 	</div>

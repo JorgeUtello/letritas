@@ -32,7 +32,7 @@ export class LetritasComponent {
 	darkMode = false;
 
 	constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {
-		// Inicializar guessArray con 3 recuadros vacíos desde el inicio
+		// Inicializar guessArray con 5 recuadros vacíos desde el inicio
 		this.guessArray = Array(this.wordLength).fill('');
 		this.setKeyboardRows();
 		this.fetchWord();
@@ -54,14 +54,6 @@ export class LetritasComponent {
 	}
 
 	private setKeyboardRows() {
-		// Teclado tipo QWERTY, 3 filas, 10 letras la primera, 10 la segunda, 9 la tercera (incluyendo la Ñ)
-		const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
-		const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ'];
-		const row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
-		this.keyboardRows = [row1, row2, row3];
-	}
-
-	private setKeyboardRowsMobile() {
 		// Teclado tipo QWERTY, 3 filas, 10 letras la primera, 10 la segunda, 9 la tercera (incluyendo la Ñ)
 		const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
 		const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ'];
@@ -376,9 +368,11 @@ export class LetritasComponent {
 	}
 
 	applyWordLength() {
+		console.log(this.wordLength)
 		this.setCookie('letritas-length', String(this.wordLength));
 		this.showWordLengthPopup = false;
 		this.reset(); // Reinicia el juego con la nueva cantidad de letras
+		this.guessArray = Array(this.wordLength).fill('');
 	}
 
 	// Alterna el modo oscuro y guarda preferencia en cookie

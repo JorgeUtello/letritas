@@ -1,3 +1,16 @@
+.header {
+	width: 100%;
+    margin-bottom: 15px;
+    height: 20px;
+    border-bottom: 1px grey solid;
+}
+
+.head-titulo {
+	font-size: 13px;
+	margin-top: -10px;
+	margin-bottom: 25px;
+}
+
 .letritas-container {
 	text-align: center;
 	margin: auto;
@@ -257,18 +270,24 @@ button[disabled] {
 	border: none;
 }
 
-.keyboard-mobile {
+.show-in-desktop {
+	display: inline;
+}
+
+.show-in-mobile {
 	display: none;
 }
 
 @media (max-width: 600px) {
-	.keyboard {
+	.show-in-desktop {
 		display: none;
-		;
+	}
+
+	.show-in-mobile {
+		display: inline;
 	}
 
 	.keyboard-mobile {
-		display: inline;
 		margin-bottom: 15px;
 	}
 
@@ -333,6 +352,7 @@ button[disabled] {
 
 .reload-btn svg {
 	display: block;
+	width: 18px;
 }
 
 .reload-btn:hover svg path {
